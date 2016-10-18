@@ -1,0 +1,12 @@
+I2C on the R-PI
+
+1. Edit config file, enter 'sudo nano /etc/modprobe.d/raspi-blacklist.conf' and add # infront of 'blacklist i2c-bcm2708'
+2. Add I2C module, enter 'sudo nano /etc/modules' and enter 'i2c-dev' on a new line at the end.
+3. Enter 'sudo apt-get install i2c-tools', if fails enter 'sudo apt-get update' and retry first command.
+4. Enter 'sudo apt-get install python-smbus'.
+5. Enter 'sudo adduser pi i2c' to add the user 'pi' to the I2C access group.
+6. Enter 'sudo reboot' to reboot the PI.
+7. Test the i2c software by entering 'sudo i2cdetect -y 0' or 'sudo i2cdetect -y 1', DS-RGBW.S should appear at address 0x70 when A0 and A1 are set.
+8. If the above command does not work enter 'sudo modprobe i2c-bcm2708'
+9. Run the RGBW.S Python file by entering 'sudo python RGBW.py
+10. Note: The RGBW.py python file may need to be modified dependant on the Raspberry-PI model being used.
